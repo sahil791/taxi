@@ -91,7 +91,7 @@ exports.updateCustomer=(req,res)=>{
 exports.showCustomerBookings=(req,res)=>{
     Promise.coroutine(function*(){
         yield dbHandler.checkAuthorization(req.id,'customer');
-        const data = yield dbHandler.showCustomerBookings(req.id,req.headers["offset"],req.headers["limit"],req.headers["status"]);
+        const data = yield dbHandler.showCustomerBookings(req.id,req.headers["offset"] || req.query.offset,req.headers["limit"] || req.query.limit,req.headers["status"] || req.query.status);
         res.status(CONSTANTS.responseFlags.DISPLAY_BOOKINGS).json({
             Data:data,
             statusCode:CONSTANTS.responseFlags.DISPLAY_BOOKINGS,

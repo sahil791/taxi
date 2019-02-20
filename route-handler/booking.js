@@ -6,7 +6,6 @@ const Token            = require('../lib/token.js');
 exports.createBooking=(req,res)=>{
     Promise.coroutine(function*(){
         yield dbHandler.checkAuthorization(req.id,'customer');
-        //const  customerID = yield dbHandler.getID(req.body.email,'customer');
         yield dbHandler.createBooking(req.id,req.body.fromLat,req.body.fromLon,req.body.toLat,req.body.toLon,req.body.cost)
         res.status(CONSTANTS.responseFlags.BOOKING_CREATED).json({
             Data:{

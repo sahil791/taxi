@@ -342,7 +342,7 @@ exports.createBooking = (customerID,fromLat,fromLon,toLat,toLon,cost)=>{
 
 exports.showBookings = (offset,limit,status)=>{
     return new Promise((resolve,reject)=>{
-        conn.query(`SELECT booking_id,customer.email as customerEmail,customer.name as customerName,driver.name as driverName,pickup_location,destination_location,estimated_cost from booking inner join customer inner join driver on booking.customer_id=customer.id and booking.driver_id=driver.id and booking.status = ${status} LIMIT ${offset},${limit}`, function(err, rows, fields) {
+        conn.query(`SELECT booking_id,customer.email as customerEmail,customer.name as customerName,pickup_location,destination_location,estimated_cost from booking inner join customer on booking.customer_id=customer.id and booking.status = ${status} LIMIT ${offset},${limit}`, function(err, rows, fields) {
             if(err){
                 reject(Boom.badImplementation('Implementation error').output.payload);
             }
@@ -373,7 +373,6 @@ exports.checkDriverAvailability = (driverID)=>{
 
 exports.assignDriver=(driverID,bookingID,adminID)=>{
     return new Promise((resolve,reject)=>{
-        console.log('in assign diver');
         conn.query(`UPDATE booking inner join driver on driver.id >= 1 set booking.status=1,booking.driver_id=${driverID},booking.admin_id=${adminID},driver.status=1 where driver.id='${driverID}' and booking_id=${bookingID}`,function(err,rows,field){
             if(err){
                 console.log(err);
