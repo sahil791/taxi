@@ -1,3 +1,6 @@
+/**
+ * All status codes used in the project are taken from this file.
+ */
 exports.responseFlags = {
     LOGIN_SUCCESS               : 200,
     SIGN_UP_SUCCESS             : 201,

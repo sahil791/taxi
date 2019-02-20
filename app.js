@@ -1,3 +1,6 @@
+/**
+ * This file creates the routes fot admin, customer,driver and booking.
+ */
 express               = require('express');
 const app             = express();
 const admin           = require('./controller/admin.js');
@@ -14,8 +17,11 @@ app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swaggerDocument));
 app.use(express.json());
 
 app.use('/admin',admin);
+
 app.use('/customer',customer);
+
 app.use('/driver',driver);
+
 app.use('/booking',booking);
 
 

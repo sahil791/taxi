@@ -1,3 +1,6 @@
+/**
+ * Validations to validate bookings data.
+ */
 const Joi   = require('joi');
 const CONSTANTS = require('../properties/constants.js');
 

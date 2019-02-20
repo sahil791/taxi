@@ -88,6 +88,11 @@ exports.getCustomerPassword=(email)=>{
     })
 }
 
+/**
+ * To Get All Customer.
+ * @param {number} offset 
+ * @param {number} limit 
+ */
 exports.getAllCustomers = (offset,limit)=>{
     return new Promise((resolve,reject) => {
         conn.query(`SELECT id,name,phone_no,email,location from customer LIMIT ${offset},${limit}`, function(err, rows, fields) {
@@ -101,6 +106,10 @@ exports.getAllCustomers = (offset,limit)=>{
     })
 }
 
+/**
+ * To Delete Customer.
+ * @param {number} id  
+ */
 exports.deleteCustomer=(id)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`DELETE from customer where id='${id}'`,function(err,rows,fields){
@@ -119,6 +128,12 @@ exports.deleteCustomer=(id)=>{
     })
 }
 
+/**
+ * To Update Customer.
+ * @param {string} CustomerName
+ * @param {number} email 
+ * @param {number} phoneNo 
+ */
 exports.updateCustomer=(customerName,email,phoneNo)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`UPDATE customer set name='${customerName}',phone_no='${phoneNo}' where email='${email}'`,function(err,rows,field){
@@ -137,6 +152,13 @@ exports.updateCustomer=(customerName,email,phoneNo)=>{
     })
 }
 
+/**
+ * To Get Customer Bookings.
+ * @param {number} CustomerID 
+ * @param {number} offset 
+ * @param {number} limit 
+ * @param {number} status 
+ */
 exports.showCustomerBookings = (customerID,offset,limit,status)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`SELECT booking_id,pickup_location,destination_location,estimated_cost from booking where customer_id=${customerID} and status=${status} LIMIT ${offset},${limit}`, function(err, rows, fields) {
@@ -151,6 +173,11 @@ exports.showCustomerBookings = (customerID,offset,limit,status)=>{
     })
 }
 
+/**
+ * To get Customer ID.
+ * @param {string} email
+ * @param {string} TableName  
+ */
 exports.getID=(email,tableName)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`SELECT id from ${tableName} where email = '${email}' `, function(err, rows, fields) {
@@ -169,6 +196,11 @@ exports.getID=(email,tableName)=>{
     })
 }
 
+/**
+ * To check if phone no is unique.
+ * @param {string} phoneNo
+ * @param {string} TableName  
+ */
 exports.getUniquePhoneNo = (phoneNo,tableName)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`SELECT phone_no from ${tableName} where phone_no = '${phoneNo}' `, function(err, rows, fields) {
@@ -187,6 +219,11 @@ exports.getUniquePhoneNo = (phoneNo,tableName)=>{
     })
 }
 
+/**
+ * To check if email is unique.
+ * @param {string} email
+ * @param {string} TableName  
+ */
 exports.getUniqueEmail = (email,tableName)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`SELECT email from ${tableName} where email = '${email}' `, function(err, rows, fields) {
@@ -205,6 +242,10 @@ exports.getUniqueEmail = (email,tableName)=>{
     })
 }
 
+/**
+ * To check if vehicle no is unique.
+ * @param {number} vehicleNo  
+ */
 exports.getUniqueVehicleNo = (vehicleNo)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`SELECT vehicle_no from driver where vehicle_no = '${vehicleNo}' `, function(err, rows, fields) {
@@ -223,6 +264,10 @@ exports.getUniqueVehicleNo = (vehicleNo)=>{
     })
 }
 
+/**
+ * To check if License no is unique.
+ * @param {number} LicenseNo  
+ */
 exports.getUniqueLicenseNo = (licenseNo)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`SELECT license_no from driver where license_no = '${licenseNo}' `, function(err, rows, fields) {
@@ -241,6 +286,17 @@ exports.getUniqueLicenseNo = (licenseNo)=>{
     })
 }
 
+/**
+ * To Add Driver.
+ * @param {string} DriverName 
+ * @param {string} Email 
+ * @param {string} Password 
+ * @param {string} PhoneNumber
+ * @param {number} LicenseNo 
+ * @param {number} VehicleNo
+ * @param {number} Longitude
+ * @param {number} Latitude
+ */
 exports.addDriver = (driverName,email,password,phoneNo,vehicleNo,licenseNo,lat,lon)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`INSERT INTO driver(name,email,password,phone_no,vehicle_no,license_no,location,status) VALUES ('${driverName}', '${email}', '${password}', '${phoneNo}','${vehicleNo}','${licenseNo}',GeomFromText('POINT(${lat} ${lon})'),0)`,function(err,rows,field){
@@ -255,6 +311,10 @@ exports.addDriver = (driverName,email,password,phoneNo,vehicleNo,licenseNo,lat,l
     });
 }
 
+/**
+ * To get driver password.
+ * @param {string} email  
+ */
 exports.getDriverPassword=(email)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`SELECT password,id from driver where email = '${email}' `, function(err, rows, fields) {
@@ -273,6 +333,10 @@ exports.getDriverPassword=(email)=>{
     })
 }
 
+/**
+ * To delete driver.
+ * @param {string} email  
+ */
 exports.deleteDriver=(email)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`DELETE from driver where email='${email}'`,function(err,rows,fields){
@@ -292,6 +356,12 @@ exports.deleteDriver=(email)=>{
     })
 }
 
+/**
+ * To Update driver.
+ * @param {string } Name
+ * @param {number} ID  
+ * @param {string} PhoneNumber
+ */
 exports.updateDriver=(driverName,id,phoneNo)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`UPDATE driver set name='${driverName}',phone_no='${phoneNo}' where id='${id}'`,function(err,rows,field){
@@ -310,6 +380,13 @@ exports.updateDriver=(driverName,id,phoneNo)=>{
     })
 }
 
+/**
+ * To Get Driver Bookings.
+ * @param {number} DriverID 
+ * @param {number} offset 
+ * @param {number} limit 
+ * @param {number} status 
+ */
 exports.showDriverBookings = (driverID,offset,limit,status)=>{
     return new Promise((resolve,reject)=>{
         console.log('in show driver booking');
@@ -325,6 +402,15 @@ exports.showDriverBookings = (driverID,offset,limit,status)=>{
     })
 }
 
+/**
+ * To Create Bookings.
+ * @param {number} CustomerID 
+ * @param {number} FromLatitude 
+ * @param {number} FromLongitude 
+ * @param {number} TOLangitude
+ * @param {number} ToLongitude
+ * @param {number} Cost 
+ */
 exports.createBooking = (customerID,fromLat,fromLon,toLat,toLon,cost)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`INSERT INTO booking (customer_id,pickup_location,destination_location,estimated_cost,date,time,status) VALUES ('${customerID}',GeomFromText('POINT(${fromLat} ${fromLon})'),GeomFromText('POINT(${toLat} ${toLon})'),${cost},CURRENT_DATE(),CURTIME(),0)`,function(err,rows,field){
@@ -340,6 +426,12 @@ exports.createBooking = (customerID,fromLat,fromLon,toLat,toLon,cost)=>{
     });
 }
 
+/**
+ * To Get All Bookings.
+ * @param {number} offset 
+ * @param {number} limit 
+ * @param {number} status 
+ */
 exports.showBookings = (offset,limit,status)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`SELECT booking_id,customer.email as customerEmail,customer.name as customerName,pickup_location,destination_location,estimated_cost from booking inner join customer on booking.customer_id=customer.id and booking.status = ${status} LIMIT ${offset},${limit}`, function(err, rows, fields) {
@@ -353,6 +445,10 @@ exports.showBookings = (offset,limit,status)=>{
     })
 }
 
+/**
+ * To check driver availability.
+ * @param {number} DriverID  
+ */
 exports.checkDriverAvailability = (driverID)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`SELECT status from driver where id=${driverID} and status=0`, function(err, rows, fields) {
@@ -371,6 +467,12 @@ exports.checkDriverAvailability = (driverID)=>{
     })
 }
 
+/**
+ * To Assign Driver.
+ * @param {number} DriverID 
+ * @param {number} BookingID 
+ * @param {number} AdminID  
+ */
 exports.assignDriver=(driverID,bookingID,adminID)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`UPDATE booking inner join driver on driver.id >= 1 set booking.status=1,booking.driver_id=${driverID},booking.admin_id=${adminID},driver.status=1 where driver.id='${driverID}' and booking_id=${bookingID}`,function(err,rows,field){
@@ -390,6 +492,10 @@ exports.assignDriver=(driverID,bookingID,adminID)=>{
     })
 }
 
+/**
+ * To Get Customer Bookings.
+ * @param {number} DriverID 
+ */
 exports.setStatus=(driverID)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`UPDATE booking inner join driver on driver.id = booking.driver_id set booking.status=2,driver.status=0 where booking.driver_id='${driverID}'`,function(err,rows,field){
@@ -409,6 +515,11 @@ exports.setStatus=(driverID)=>{
     })
 }
 
+/**
+ * To Check if id belongs to correct table.
+ * @param {number} id 
+ * @param {string} TableName 
+ */
 exports.checkAuthorization=(id,tableName)=>{
     return new Promise((resolve,reject)=>{
         conn.query(`SELECT id from ${tableName} where id=${id}`, function(err, rows, fields) {

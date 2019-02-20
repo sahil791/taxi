@@ -1,3 +1,6 @@
+/**
+ * Routes related to Customer are in this file.
+ */
 const router            = express.Router();
 const Customer          = require('../route-handler/customer');
 const Token             = require('../lib/token');

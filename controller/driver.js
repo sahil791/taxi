@@ -1,3 +1,7 @@
+/**
+ * Routes related to Driver are in this file.
+ */
+
 const router          = express.Router();
 const Driver          = require('../route-handler/driver');
 const Token           = require('../lib/token');

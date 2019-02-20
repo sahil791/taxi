@@ -1,3 +1,6 @@
+/**
+ * Routes related to booking are in this file.
+ */
 const router           = express.Router();
 const Booking          = require('../route-handler/booking');
 const Token            = require('../lib/token');

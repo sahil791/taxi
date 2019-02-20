@@ -1,3 +1,6 @@
+/**
+ * Validations to validate customer data.
+ */
 const Joi   = require('joi');
 const CONSTANTS = require('../properties/constants.js');
 

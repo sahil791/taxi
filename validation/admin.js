@@ -1,3 +1,6 @@
+/**
+ * Validations to validate admin data.
+ */
 const Joi = require('joi');
 
 exports.validateLogin=(req,res,next)=>{

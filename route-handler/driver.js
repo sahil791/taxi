@@ -1,3 +1,7 @@
+/**
+ *  All Driver related functions are defined in this file.
+ */
+
 const dbHandler        = require('../services/database-handler');
 const Promise          = require('bluebird');
 const CONSTANTS        = require('../properties/constants.js');

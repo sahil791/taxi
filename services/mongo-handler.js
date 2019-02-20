@@ -1,3 +1,7 @@
+/**
+ *  All queries related to mongo db database are written in this file.
+ */
+
 const dbo = require('./mongodb')
 const Promise = require('bluebird')
 const Boom = require('boom');

@@ -1,3 +1,6 @@
+/**
+ * File to create connection of mongo db with node js
+ */
 const MongoClient = require('mongodb').MongoClient;
 
 // Use connect method to connect to the Server
