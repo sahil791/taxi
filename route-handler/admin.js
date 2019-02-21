@@ -31,7 +31,7 @@ exports.assignDriver=(req,res)=>{
         yield dbHandler.checkAuthorization(req.id,'admin');
         yield dbHandler.checkDriverAvailability(req.body.driverID);
         yield dbHandler.assignDriver(req.body.driverID,req.body.bookingID,req.id);
-        yield mongoHandler.logData(req.id,req.body.driverID);
+        yield mongoHandler.logData(req.id,req.body.driverID,req.body.bookingID);
         res.status(CONSTANTS.responseFlags.DRIVER_ASSIGNED).json({
             Data:{
                 bookingID:req.body.bookingID,

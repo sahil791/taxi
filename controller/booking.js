@@ -8,7 +8,6 @@ const validator         = require('../validation/booking');
 
 router.use(express.json());
 
-
 // customer token
 router.post('/create',validator.validateBooking,Token.accessToken,Booking.createBooking);
 

@@ -20,3 +20,22 @@ exports.validateLogin=(req,res,next)=>{
           }
     }); 
 }
+
+exports.validateDriverAssigning=(req,res,next)=>{
+  const schema = Joi.object().keys({
+      driverID:Joi.number().required(),
+      bookingID:Joi.number().required(),
+      token:Joi.string().required()
+  });
+  Joi.validate(req.body, schema, function (err, value) { 
+      if (err) {
+          res.json({
+            message: 'Insufficient information was supplied. Please check and try again.',
+            status: 400,
+            data: err.details[0].message,
+          });
+        } else {
+          next();
+        }
+  }); 
+}

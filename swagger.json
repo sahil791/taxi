@@ -2,7 +2,7 @@
     "openapi": "3.0.1",
     "info": {
       "title": "Jugnoo Taxi",
-      "description": "defaultDescription",
+      "description": "Book cabs anytime anywhere.",
       "version": "0.1"
     },
     "servers": [
@@ -14,7 +14,8 @@
       "/admin/login": {
         "post": {
             "tags":["Admin"],
-          "description": "Auto generated using Swagger Inspector",
+            "summary":"Admin login",
+          "description": "Admin login",
           "requestBody": {
             "content": {
               "application/json": {
@@ -39,7 +40,7 @@
           },
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "Admin login",
               "content": {
                 "application/json; charset=utf-8": {
                   "schema": {
@@ -66,7 +67,8 @@
       "/booking/show": {
         "get": {
             "tags":["Bookings"],
-          "description": "Auto generated using Swagger Inspector",
+            "summary":"To show all bookings",
+          "description": "Show bookings",
           "parameters": [
             {
               "name": "offset",
@@ -103,7 +105,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "Show bookings",
               "content": {
                 "application/json; charset=utf-8": {
                   "schema": {
@@ -130,7 +132,8 @@
       "/driver/set/status": {
         "post": {
             "tags":["Driver"],
-          "description": "Auto generated using Swagger Inspector",
+            "summary":"To mark booking as completed",
+          "description": "To mark booking as completed",
           "requestBody": {
             "content": {
               "application/json": {
@@ -152,7 +155,7 @@
           },
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "Booking marked as completed",
               "content": {
                 "application/json; charset=utf-8": {
                   "schema": {
@@ -179,7 +182,8 @@
       "/booking/create": {
         "post": {
             "tags":["Bookings"],
-          "description": "Auto generated using Swagger Inspector",
+            "summary":"To create booking",
+          "description": "To create booking",
           "requestBody": {
             "content": {
               "application/json": {
@@ -216,7 +220,7 @@
           },
           "responses": {
             "201": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "Create booking",
               "content": {
                 "application/json; charset=utf-8": {
                   "schema": {
@@ -243,7 +247,8 @@
       "/customer/login": {
         "post": {
             "tags":["Customer"],
-          "description": "Auto generated using Swagger Inspector",
+            "summary":"Login for customers",
+          "description": "Customer login",
           "requestBody": {
             "content": {
               "application/json": {
@@ -268,7 +273,7 @@
           },
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "Customer login",
               "content": {
                 "application/json; charset=utf-8": {
                   "schema": {
@@ -295,7 +300,8 @@
       "/customer/showAll": {
         "get": {
             "tags":["Customer"],
-          "description": "Auto generated using Swagger Inspector",
+            "summary":"To show all customer",
+          "description": "Show all customers",
           "parameters": [
             {
               "name": "offset",
@@ -348,7 +354,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "Show all customers",
               "content": {
                 "application/json; charset=utf-8": {
                   "schema": {
@@ -375,7 +381,8 @@
       "/customer/bookings": {
         "get": {
             "tags":["Customer"],
-          "description": "Auto generated using Swagger Inspector",
+            "summary":"To show all bookings of customers",
+          "description": "Customer bookings",
           "parameters": [
             {
               "name": "offset",
@@ -444,7 +451,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "Customer bookings",
               "content": {
                 "application/json; charset=utf-8": {
                   "schema": {
@@ -471,7 +478,8 @@
       "/customer/signup": {
         "post": {
             "tags":["Customer"],
-          "description": "Auto generated using Swagger Inspector",
+            "summary":"Signup for customers",
+          "description": "Customer signup",
           "requestBody": {
             "content": {
               "application/json": {
@@ -508,7 +516,7 @@
           },
           "responses": {
             "201": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "Customer signup",
               "content": {
                 "application/json; charset=utf-8": {
                   "schema": {
@@ -535,7 +543,8 @@
       "/customer/delete": {
         "delete": {
             "tags":["Customer"],
-          "description": "Auto generated using Swagger Inspector",
+            "summary":"To delete customer",
+          "description": "To delete customer",
           "parameters": [
             {
               "name": "token",
@@ -548,7 +557,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "Delete customer",
               "content": {
                 "application/json; charset=utf-8": {
                   "schema": {
@@ -575,7 +584,8 @@
       "/driver/bookings": {
         "get": {
             "tags":["Driver"],
-          "description": "Auto generated using Swagger Inspector",
+            "summary":"To show bookings of driver",
+          "description": "Driver Bookings",
           "parameters": [
             {
               "name": "offset",
@@ -612,7 +622,7 @@
           ],
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "Driver bookings",
               "content": {
                 "application/json; charset=utf-8": {
                   "schema": {
@@ -639,7 +649,8 @@
       "/driver/update": {
         "put": {
             "tags":["Driver"],
-          "description": "Auto generated using Swagger Inspector",
+            "summary":"To update driver",
+          "description": "To update driver",
           "requestBody": {
             "content": {
               "application/json": {
@@ -667,7 +678,7 @@
           },
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "Update driver",
               "content": {
                 "application/json; charset=utf-8": {
                   "schema": {
@@ -694,7 +705,8 @@
       "/customer/update": {
         "put": {
             "tags":["Customer"],
-          "description": "Auto generated using Swagger Inspector",
+            "summary":"To update customer",
+          "description": "Update Customer",
           "requestBody": {
             "content": {
               "application/json": {
@@ -725,7 +737,7 @@
           },
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "Customer update",
               "content": {
                 "application/json; charset=utf-8": {
                   "schema": {
@@ -752,7 +764,8 @@
       "/driver/signup": {
         "post": {
             "tags":["Driver"],
-          "description": "Auto generated using Swagger Inspector",
+            "summary":"Driver signup",
+          "description": "Driver signup",
           "requestBody": {
             "content": {
               "application/json": {
@@ -795,7 +808,7 @@
           },
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "Driver signup",
               "content": {
                 "application/json; charset=utf-8": {
                   "schema": {
@@ -822,7 +835,8 @@
       "/driver/login": {
         "post": {
             "tags":["Driver"],
-          "description": "Auto generated using Swagger Inspector",
+            "summary":"Driver login",
+          "description": "Driver login",
           "requestBody": {
             "content": {
               "application/json": {
@@ -847,7 +861,7 @@
           },
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "Driver login",
               "content": {
                 "application/json; charset=utf-8": {
                   "schema": {
@@ -874,7 +888,8 @@
       "/admin/assign/driver": {
         "post": {
             "tags":["Admin"],
-          "description": "Auto generated using Swagger Inspector",
+            "summary":"To assign driver to booking",
+          "description": "Assign driver",
           "requestBody": {
             "content": {
               "application/json": {
@@ -902,7 +917,7 @@
           },
           "responses": {
             "200": {
-              "description": "Auto generated using Swagger Inspector",
+              "description": "Assign Driver",
               "content": {
                 "application/json; charset=utf-8": {
                   "schema": {

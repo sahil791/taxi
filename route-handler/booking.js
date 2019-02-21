@@ -25,7 +25,7 @@ exports.createBooking=(req,res)=>{
                 estimatedCost:req.body.estimatedCost
             },
             statusCode: CONSTANTS.responseFlags.BOOKING_CREATED,
-            Message:"updation successfull"
+            Message:"Booking Created"
         })
     })()
     .catch(err=>res.status(CONSTANTS.responseFlags.INVALID_CREDENTIALS).send(err))

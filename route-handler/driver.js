@@ -119,7 +119,7 @@ exports.setStatus = (req,res)=>{
     Promise.coroutine(function*(){
         yield dbHandler.checkAuthorization(req.id,'driver');
         yield dbHandler.setStatus(req.id);
-        yield mongoHandler.addCompletionTime(req.id);
+        yield mongoHandler.addCompletionTime(req.id,req.body.bookingID);
         res.status(CONSTANTS.responseFlags.COMPLETED_SUCCESSFULLY).json({
             Data:{
                 driverID:req.id,

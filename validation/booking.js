@@ -26,3 +26,23 @@ exports.validateBooking=(req,res,next)=>{
           }
     }); 
 }
+
+exports.validateShowBooking=(req,res,next)=>{
+  const schema = Joi.object().keys({
+      token:Joi.string().required(),
+      offset:Joi.number().required(),
+      limit:Joi.number().required(),
+      status:Joi.number().required()
+  });
+  Joi.validate(req.headers, schema, function (err, value) { 
+      if (err) {
+          res.json({
+            message: 'Insufficient information was supplied. Please check and try again.',
+            status: 400,
+            data: err.details[0].message,
+          });
+        } else {
+          next();
+        }
+  }); 
+}

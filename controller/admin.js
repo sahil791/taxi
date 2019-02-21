@@ -7,6 +7,6 @@ router.use(express.json());
 
 router.post('/login',validate.validateLogin,Admin.login);
 
-router.post('/assign/driver',Token.accessToken,Admin.assignDriver);
+router.post('/assign/driver',validate.validateDriverAssigning,Token.accessToken,Admin.assignDriver);
 
 module.exports = router;

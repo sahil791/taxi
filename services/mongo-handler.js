@@ -10,9 +10,15 @@ async function init(){
     db = await dbo.initialize();
 }
 
- const logData=(adminID,driverID)=>{
+/**
+ * To store booking id,admin id,driverid and assign date
+ * @param {number} adminID 
+ * @param {number} driverID
+ * @param {number} bookingID  
+ */
+ const logData=(adminID,driverID,bookingID)=>{
     return new Promise((resolve,reject)=>{
-        db.collection('log').insertOne({"admin_id":adminID,"driver_id":driverID,"date":Date()},function(err,data){
+        db.collection('log').insertOne({"booking_id":bookingID,"admin_id":adminID,"driver_id":driverID,"date":Date()},function(err,data){
             if(err){
                 return reject(Boom.badImplementation("Implementation error").output.payload);
             }
@@ -22,9 +28,14 @@ async function init(){
     
 }
 
-const addCompletionTime = (driverID)=>{
+/**
+ * Add time when driver marked booking as complete
+ * @param {number} driverID 
+ * @param {number} bookingID 
+ */
+const addCompletionTime = (driverID,bookingID)=>{
     return new Promise((resolve,reject)=>{
-        db.collection('log').updateOne({"driver_id":driverID},{$set:{"completion_time":Date()}},{upsert:false},function(err,data){
+        db.collection('log').updateOne({"booking_id":bookingID},{$set:{"completion_time":Date()}},{upsert:false},function(err,data){
             if(err){
                 return reject(Boom.badImplementation("Implementation error").output.payload);
             }
